@@ -38,7 +38,10 @@ a:focus-visible,input:focus-visible,textarea:focus-visible,button:focus-visible{
 .track{display:flex;gap:14px;width:max-content;height:100%;animation:drift 80s linear infinite;will-change:transform}
 .track i{display:block;flex:none;height:100%;width:clamp(230px,44vw,620px);filter:blur(7px)}
 .base .track{opacity:.75}.top .track{opacity:.6}
-.base .track i:nth-child(4n+1){background:#d8b878}.base .track i:nth-child(4n+2){background:#9aa1e3}.base .track i:nth-child(4n+3){background:#efe6d2}.base .track i:nth-child(4n){background:#c9808c}
+.base .track i:nth-child(4n+1){background:url('assets/header/header_01.jpg') center/cover no-repeat}
+.base .track i:nth-child(4n+2){background:url('assets/header/header_02.jpg') center/cover no-repeat}
+.base .track i:nth-child(4n+3){background:url('assets/header/header_03.jpg') center/cover no-repeat}
+.base .track i:nth-child(4n){background:url('assets/header/header_04.jpg') center/cover no-repeat}
 .top .track i:nth-child(4n+1){background:#2c3270}.top .track i:nth-child(4n+2){background:#5b3358}.top .track i:nth-child(4n+3){background:#4b57a3}.top .track i:nth-child(4n){background:#6a5a3c}
 @keyframes drift{to{transform:translateX(-50%)}}
 main{margin-left:var(--rail)}
