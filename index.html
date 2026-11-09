@@ -285,10 +285,11 @@ document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#
    year, role, tools, steps [[stage, text], ...]. Put files in assets/projects/ and use paths like "assets/projects/name.jpg". */
 function mk(){return [['Concept and reference','Describe how the idea started and what you gathered.'],['Modelling and layout','Describe the build and how you set up the shots.'],['Animation','Describe the movement and timing decisions.'],['Lighting and rendering','Describe the look and how you rendered it.'],['Compositing and finish','Describe the final polish and delivery.']]}
 var PR=[
-{title:'Project one',cats:['Motion','3D'],bg:'#c3c7ea',fg:'#23253a',cover:'',video:'',year:'2026',role:'Your role (placeholder)',tools:'Add your software here (placeholder)',steps:mk()},
-{title:'Project two',cats:['VFX'],bg:'#a8344a',fg:'#efe6d2',cover:'',video:'',year:'2026',role:'Your role (placeholder)',tools:'Add your software here (placeholder)',steps:mk()},
-{title:'Project three',cats:['Film','VFX'],bg:'#d8b878',fg:'#23253a',cover:'',video:'',year:'2025',role:'Your role (placeholder)',tools:'Add your software here (placeholder)',steps:mk()},
-{title:'Project four',cats:['3D'],bg:'#3b4183',fg:'#efe6d2',cover:'',video:'',year:'2025',role:'Your role (placeholder)',tools:'Add your software here (placeholder)',steps:mk()}];
+
+{title:'Project one',cats:['Motion','3D'],bg:'#c3c7ea',fg:'#23253a',cover:'assets/projects/Project_Showcase_01.png',video:'',year:'2026',role:'3D Generalist',tools:'Blender, After Effects, DaVinci Resolve',steps:mk()},
+{title:'Project two',cats:['VFX'],bg:'#a8344a',fg:'#efe6d2',cover:'assets/projects/Project_Showcase_02.png',video:'',year:'2026',role:'Your role (placeholder)',tools:'Add your software here (placeholder)',steps:mk()},
+{title:'Project three',cats:['Film','VFX'],bg:'#d8b878',fg:'#23253a',cover:'assets/projects/Project_Showcase_03.png',video:'',year:'2025',role:'Your role (placeholder)',tools:'Add your software here (placeholder)',steps:mk()},
+{title:'Project four',cats:['3D'],bg:'#3b4183',fg:'#efe6d2',cover:'assets/projects/Project_Showcase_04.png',video:'',year:'2025',role:'Your role (placeholder)',tools:'Add your software here (placeholder)',steps:mk()}];
 (function(){var pl=document.getElementById('pnl');PR.forEach(function(p,i){var d=el('div','pn'),cl=el('div','clip'),pc=el('div','pic'),pb=el('span','pb','+');
 d.setAttribute('data-i',i);d.setAttribute('data-c',p.cats.join(' '));d.tabIndex=0;d.setAttribute('role','button');d.setAttribute('aria-label','Open project: '+p.title);d.style.setProperty('--bgc',p.bg);d.style.setProperty('--fg',p.fg);
 if(p.cover){pc.classList.add('has');pc.style.backgroundImage='url("'+p.cover+'")'}else{pc.textContent='Project image placeholder'}
