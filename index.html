@@ -381,10 +381,10 @@ var rvEl=document.getElementById('rv');if('IntersectionObserver' in window&&rvEl
    title, cats (tags), bg + fg (panel colours), cover (image path, optional), video (optional), youtube (optional link),
    role, tools. Put files in assets/projects/ and use paths like "assets/projects/name.jpg". */
 var PR=[
-{title:'Project one',cats:['Motion','3D'],bg:'#c3c7ea',fg:'#23253a',cover:'assets/projects/Project_Showcase_01.png',video:'',youtube:'',role:'3D Generalist',tools:'Blender, After Effects, DaVinci Resolve'},
-{title:'Project two',cats:['VFX'],bg:'#a8344a',fg:'#efe6d2',cover:'assets/projects/Project_Showcase_02.png',video:'',youtube:'',role:'Your role (placeholder)',tools:'Add your software here (placeholder)'},
-{title:'Project three',cats:['Film','VFX'],bg:'#d8b878',fg:'#23253a',cover:'assets/projects/Project_Showcase_03.png',video:'',youtube:'',role:'Your role (placeholder)',tools:'Add your software here (placeholder)'},
-{title:'Project four',cats:['3D'],bg:'#3b4183',fg:'#efe6d2',cover:'assets/projects/Project_Showcase_04.png',video:'',youtube:'',role:'Your role (placeholder)',tools:'Add your software here (placeholder)'}];
+{title:'UKKI',cats:['Motion','3D'],bg:'#c3c7ea',fg:'#23253a',cover:'assets/projects/Project_Showcase_01.png',video:'',youtube:'',role:'3D Generalist',tools:'Blender, After Effects, DaVinci Resolve'},
+{title:'Detour Society',cats:['VFX'],bg:'#a8344a',fg:'#efe6d2',cover:'assets/projects/Project_Showcase_02.png',video:'',youtube:'',role:'Your role (placeholder)',tools:'Add your software here (placeholder)'},
+{title:'Bluewhale Granite',cats:['Film','VFX'],bg:'#d8b878',fg:'#23253a',cover:'assets/projects/Project_Showcase_03.png',video:'',youtube:'',role:'Your role (placeholder)',tools:'Add your software here (placeholder)'},
+{title:'Maverick AI',cats:['3D'],bg:'#3b4183',fg:'#efe6d2',cover:'assets/projects/Project_Showcase_04.png',video:'',youtube:'',role:'Your role (placeholder)',tools:'Add your software here (placeholder)'}];
 (function(){var pl=document.getElementById('pnl');PR.forEach(function(p,i){var d=el('div','pn'),cl=el('div','clip'),pc=el('div','pic'),pb=el('span','pb',(ytOk(p.youtube)&&YT_MODE==='redirect')?'↗':'+');
 d.setAttribute('data-i',i);d.setAttribute('data-c',p.cats.join(' '));d.tabIndex=0;d.setAttribute('role','button');d.setAttribute('aria-label',(ytOk(p.youtube)&&YT_MODE==='redirect')?'Watch '+p.title+' on YouTube (opens in a new tab)':'Open project: '+p.title);d.style.setProperty('--bgc',p.bg);d.style.setProperty('--fg',p.fg);
 if(p.cover){d.classList.add('hc');pc.classList.add('has');pc.style.backgroundImage='url("'+p.cover+'")'}else{pc.textContent='Project image placeholder'}
@@ -469,9 +469,9 @@ var pio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInte
 if(rm)pnl.classList.add('seen');
 /* ===== EXPERIENCE: edit this list (role, studio, desc, tools) ===== */
 var EXP=[
-{role:'Your role (placeholder)',studio:'Studio or client (placeholder)',desc:'Describe what you did in a sentence or two.',tools:'Your software (placeholder)'},
-{role:'Your role (placeholder)',studio:'Studio or client (placeholder)',desc:'Describe what you did in a sentence or two.',tools:'Your software (placeholder)'},
-{role:'Your role (placeholder)',studio:'Studio or client (placeholder)',desc:'Describe what you did in a sentence or two.',tools:'Your software (placeholder)'}];
+{role:'3D Generalist, Video Editor',studio:'WINGS Design Studio, Chennai',desc:'Did all the aspects of projects from pre-production to final delivery',tools:'Blender, DaVici Resolve, Photoshop'},
+{role:'3D Generalist',studio:'Black or Grey Studios, Uduppi',desc:'Modeling, Product Visualization.',tools:'Blender, Photoshop'},
+{role:'3D Generalist',studio:'Freelance',desc:'All aspects of the 3D including Video Editing',tools:'Blender, DaVici Resolve, Photoshop'}];
 (function(){var ul=document.getElementById('exl'),ex=document.getElementById('exp');
 EXP.forEach(function(e,i){var li=el('li'),b=el('button','exr'),m=el('span','exm'),pl=el('span','pl','+'),d=el('div','exd');
 li.style.setProperty('--k',i);b.type='button';b.setAttribute('aria-expanded','false');
