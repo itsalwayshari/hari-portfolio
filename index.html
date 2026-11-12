@@ -38,7 +38,7 @@ a:focus-visible,input:focus-visible,textarea:focus-visible,button:focus-visible{
 .seq{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:blur(var(--hb,5px));transform:scale(1.06)}
 .bgc.hasseq .track{display:none}
 .bgc.hasseq::after{content:"";position:absolute;inset:0}
-.base .bgc::after{content:"";position:absolute;inset:0;background:rgba(231,226,244,.42)}
+.base .bgc::after{content:"";position:absolute;inset:0;background:rgba(231,226,244,.06)}
 .base .bgc.hasseq::after{background:rgba(195,199,234,.32)}
 .base .bgc.hasseq::after{background:rgba(195,199,234,.32)}
 .top .bgc.hasseq::after{background:rgba(44,50,112,.5)}
@@ -152,8 +152,15 @@ main{margin-left:var(--rail)}
 .exd .ext{margin:0 0 20px;color:var(--mute);font-size:14px}
 .exl li.open .exd{max-height:22em;opacity:1}.exl li.open .pl{transform:rotate(45deg);background:var(--ink);color:var(--cream)}
 @media (hover:hover){.exl li:hover .exd{max-height:22em;opacity:1}.exl li:hover .pl{transform:rotate(45deg);background:var(--ink);color:var(--cream)}}
-.bgc::before{content:"";position:absolute;inset:-9%;background:var(--poster,none) center/cover no-repeat;filter:blur(var(--pb,28px)) saturate(1.1)}
-.top .bgc::after{content:"";position:absolute;inset:0;background:rgba(44,50,112,.55)}
+.bgc::before{content:"";position:absolute;inset:-6%;background:var(--hero,none) var(--hp,50%) 50%/cover no-repeat}
+.base .bgc{--hero:var(--heroL,none)}
+.top .bgc{--hero:var(--heroD,var(--heroL,none))}
+.bgb{position:absolute;inset:0;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(to top,#000 0,#000 var(--bm,34%),transparent var(--bf,58%));mask-image:linear-gradient(to top,#000 0,#000 var(--bm,34%),transparent var(--bf,58%))}
+.bgb::before{content:"";position:absolute;inset:-6%;background:var(--hero,none) var(--hp,50%) 50%/cover no-repeat;filter:blur(var(--tb,20px))}
+.bgb::after{content:"";position:absolute;inset:0;background:var(--veil,transparent)}
+.base .bgb{--veil:rgba(236,232,248,.5)}
+.top .bgb{--veil:rgba(30,35,95,.5)}
+.top .bgc::after{content:"";position:absolute;inset:0;background:rgba(44,50,112,.3)}
 .play{position:absolute;top:calc(26px + env(safe-area-inset-top,0px));right:48px;z-index:6;display:flex;align-items:center;gap:12px;padding:7px 22px 7px 7px;border:0;border-radius:99px;background:var(--cream);color:var(--ink);font:inherit;font-weight:600;cursor:pointer;box-shadow:0 14px 40px rgba(20,22,40,.35);transition:transform .3s cubic-bezier(.2,.9,.2,1)}
 .play:hover{transform:translateY(-2px) scale(1.03)}.play:active{transform:scale(.97)}
 .play:focus-visible{outline:2px solid var(--crim);outline-offset:3px}.play[hidden]{display:none}
@@ -217,6 +224,7 @@ footer{display:flex;justify-content:space-between;margin-top:14px;font-size:13px
 .curtain .contact{position:fixed;bottom:0;left:var(--rail);right:0;z-index:0;visibility:hidden}
 .curtain .stack{margin-bottom:var(--ch,0px)}
 @media (max-width:820px){
+.bgb{--bm:36%;--bf:60%}
 .play{top:calc(74px + env(safe-area-inset-top,0px));right:14px;padding:5px 16px 5px 5px;gap:10px;font-size:14px}.play i{width:40px;height:40px}.play svg{width:17px;height:17px}
 :root{--fw:70px}
 .panels{height:clamp(360px,58vh,520px)}.pn.act{flex-grow:5}.pt{font-size:18px;left:14px;right:62px;bottom:20px}.pb{width:40px;height:40px;right:12px;bottom:16px;font-size:22px}.pn::after{right:-18px;width:36px}.pic{width:200px;margin-left:-100px}
@@ -251,8 +259,8 @@ form{grid-template-columns:1fr;padding:20px}form .full,.send,#fs,.fnote{grid-col
 </header>
 <main id="top">
 <section class="reveal" id="rv" aria-label="Introduction">
-<div class="lay base" aria-hidden="true"><div class="bgc"></div><h1><b class="ln"><span class="gt">H</span><span class="gt">A</span><span class="gt">R</span><span class="gt">I</span></b><b class="ln"><span class="gt">R</span><span class="gt">.</span><span class="gt">S</span><span class="gt">.</span></b></h1></div>
-<div class="lay top" id="tp" aria-hidden="true"><div class="bgc"></div><p id="tx" class="gt"><span>3D Generalist,</span><span>Compositor,</span><span>Film maker</span></p></div>
+<div class="lay base" aria-hidden="true"><div class="bgc"><i class="bgb"></i></div><h1><b class="ln"><span class="gt">H</span><span class="gt">A</span><span class="gt">R</span><span class="gt">I</span></b><b class="ln"><span class="gt">R</span><span class="gt">.</span><span class="gt">S</span><span class="gt">.</span></b></h1></div>
+<div class="lay top" id="tp" aria-hidden="true"><div class="bgc"><i class="bgb"></i></div><p id="tx" class="gt"><span>3D Generalist,</span><span>Compositor,</span><span>Film maker</span></p></div>
 <div class="fe" id="fe" aria-hidden="true"></div>
 <div class="grip" id="gr" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4"/></svg></div>
 <span class="hint" id="hint">Drag the handle to the right</span>
@@ -331,14 +339,26 @@ function go(v){tgt=Math.max(0,Math.min(maxS(),v));if(!run){run=true;cur=window.s
 if(smooth){window.addEventListener('wheel',function(e){if(e.ctrlKey||e.metaKey||document.body.classList.contains('mo'))return;e.preventDefault();go((run?tgt:window.scrollY)+e.deltaY*(e.deltaMode===1?34:1))},{passive:false});
 window.addEventListener('scroll',function(){if(!run){cur=tgt=window.scrollY}});
 document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href'),el=id==='#top'?null:document.querySelector(id);if(id==='#top'||el){e.preventDefault();go(id==='#top'?0:id==='#contact'?maxS():el.getBoundingClientRect().top+window.scrollY)}})}
-/* ===== SHOWREEL: set your video here =====
-   src = the main reel (1080p). srcMobile = a lighter 720p copy used on phones (leave '' to use src everywhere).
-   poster = the still shown behind the hero and before the video starts. Leave src '' to hide the Play button. */
-var REEL={src:'assets/projects/HariRS3DGeneralistShowreel2026_resize.mov',srcMobile:'assets/projects/Hari_Showreel_2026_SiteLoop_720p.mp4',poster:'assets/projects/hari_showreel_1920x1080.png'};
+/* ===== ASSETS: every image and video the page uses =====
+   Paths are relative to index.html in your GitHub repo. File names are case sensitive and must have no spaces.
+   assets/hero/      hero background images
+   assets/projects/  project cover images (set in the PROJECTS list below)
+   assets/video/     showreel videos and poster */
+var ASSETS={
+ heroLight:'assets/hero/hero-bg.webp',        /* behind "HARI R. S." (the light layer) */
+ heroDark:'assets/hero/hero-bg.webp',         /* behind "3D Generalist, Compositor, Film maker" (the dark layer shown while dragging) */
+ reel:'assets/video/showreel.mp4',            /* showreel for desktop and tablet */
+ reelMobile:'assets/video/showreel-720p.mp4', /* lighter reel for phones ('' = use the same file) */
+ reelPoster:'assets/video/poster.webp'        /* still shown in the player before play */
+};
+document.documentElement.style.setProperty('--heroL','url("'+ASSETS.heroLight+'")');
+document.documentElement.style.setProperty('--heroD','url("'+(ASSETS.heroDark||ASSETS.heroLight)+'")');
+/* The blur band behind the hero text is set in CSS: --tb (strength), --bm and --bf (band height). */
+var REEL={src:ASSETS.reel,srcMobile:ASSETS.reelMobile,poster:ASSETS.reelPoster};
 (function(){
 var pb=document.getElementById('playbtn'),ov=document.getElementById('rmd'),vd=document.getElementById('rvid'),rx=document.getElementById('rx'),lastR=null,warmed=false;
 if(!REEL.src){pb.hidden=true;return}
-if(REEL.poster){document.documentElement.style.setProperty('--poster','url("'+REEL.poster+'")');vd.poster=REEL.poster}
+if(REEL.poster){vd.poster=REEL.poster}
 function pick(){var small=window.innerWidth<=820||(navigator.connection&&navigator.connection.saveData);return (small&&REEL.srcMobile)?REEL.srcMobile:REEL.src}
 function warm(){if(warmed)return;warmed=true;vd.preload='auto';vd.src=pick();vd.load()}
 pb.addEventListener('pointerenter',function(){if(!(navigator.connection&&navigator.connection.saveData))warm()});
@@ -381,10 +401,10 @@ var rvEl=document.getElementById('rv');if('IntersectionObserver' in window&&rvEl
    title, cats (tags), bg + fg (panel colours), cover (image path, optional), video (optional), youtube (optional link),
    role, tools. Put files in assets/projects/ and use paths like "assets/projects/name.jpg". */
 var PR=[
-{title:'UKKI',cats:['Motion','3D'],bg:'#c3c7ea',fg:'#23253a',cover:'assets/projects/Project_Showcase_01.png',video:'',youtube:'',role:'3D Generalist',tools:'Blender, After Effects, DaVinci Resolve'},
-{title:'Detour Society',cats:['VFX'],bg:'#a8344a',fg:'#efe6d2',cover:'assets/projects/Project_Showcase_02.png',video:'',youtube:'',role:'Your role (placeholder)',tools:'Add your software here (placeholder)'},
-{title:'Bluewhale Granite',cats:['Film','VFX'],bg:'#d8b878',fg:'#23253a',cover:'assets/projects/Project_Showcase_03.png',video:'',youtube:'',role:'Your role (placeholder)',tools:'Add your software here (placeholder)'},
-{title:'Maverick AI',cats:['3D'],bg:'#3b4183',fg:'#efe6d2',cover:'assets/projects/Project_Showcase_04.png',video:'',youtube:'',role:'Your role (placeholder)',tools:'Add your software here (placeholder)'}];
+{title:'UKKI',cats:['Motion','3D'],bg:'#c3c7ea',fg:'#23253a',cover:'assets/projects/ukki.webp',video:'',youtube:'',role:'3D Generalist',tools:'Blender, After Effects, DaVinci Resolve'},
+{title:'Detour Society',cats:['VFX'],bg:'#a8344a',fg:'#efe6d2',cover:'assets/projects/detour-society.webp',video:'',youtube:'',role:'3D Generalist, Video Editing',tools:'Blender, DaVinci Resolve, Photoshop'},
+{title:'Bluewhale Granite',cats:['Film','VFX'],bg:'#d8b878',fg:'#23253a',cover:'assets/projects/bluewhale-granite.webp',video:'',youtube:'',role:'3D Generalist',tools:'Blender, DaVinci Resolve, Photoshop'},
+{title:'Maverick AI',cats:['3D'],bg:'#3b4183',fg:'#efe6d2',cover:'assets/projects/maverick-ai.webp',video:'',youtube:'',role:'3D Generalist, Logo Animation',tools:'Blender, DaVinci Resolve, Photoshop'}];
 (function(){var pl=document.getElementById('pnl');PR.forEach(function(p,i){var d=el('div','pn'),cl=el('div','clip'),pc=el('div','pic'),pb=el('span','pb',(ytOk(p.youtube)&&YT_MODE==='redirect')?'↗':'+');
 d.setAttribute('data-i',i);d.setAttribute('data-c',p.cats.join(' '));d.tabIndex=0;d.setAttribute('role','button');d.setAttribute('aria-label',(ytOk(p.youtube)&&YT_MODE==='redirect')?'Watch '+p.title+' on YouTube (opens in a new tab)':'Open project: '+p.title);d.style.setProperty('--bgc',p.bg);d.style.setProperty('--fg',p.fg);
 if(p.cover){d.classList.add('hc');pc.classList.add('has');pc.style.backgroundImage='url("'+p.cover+'")'}else{pc.textContent='Project image placeholder'}
@@ -469,9 +489,9 @@ var pio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInte
 if(rm)pnl.classList.add('seen');
 /* ===== EXPERIENCE: edit this list (role, studio, desc, tools) ===== */
 var EXP=[
-{role:'3D Generalist, Video Editor',studio:'WINGS Design Studio, Chennai',desc:'Did all the aspects of projects from pre-production to final delivery',tools:'Blender, DaVici Resolve, Photoshop'},
+{role:'3D Generalist, Video Editor',studio:'WINGS Design Studio, Chennai',desc:'Did all the aspects of projects from pre-production to final delivery',tools:'Blender, DaVinci Resolve, Photoshop'},
 {role:'3D Generalist',studio:'Black or Grey Studios, Uduppi',desc:'Modeling, Product Visualization.',tools:'Blender, Photoshop'},
-{role:'3D Generalist',studio:'Freelance',desc:'All aspects of the 3D including Video Editing',tools:'Blender, DaVici Resolve, Photoshop'}];
+{role:'3D Generalist',studio:'Freelance',desc:'All aspects of the 3D including Video Editing',tools:'Blender, DaVinci Resolve, Photoshop'}];
 (function(){var ul=document.getElementById('exl'),ex=document.getElementById('exp');
 EXP.forEach(function(e,i){var li=el('li'),b=el('button','exr'),m=el('span','exm'),pl=el('span','pl','+'),d=el('div','exd');
 li.style.setProperty('--k',i);b.type='button';b.setAttribute('aria-expanded','false');
